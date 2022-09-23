@@ -27,7 +27,6 @@ class _CountExampleState extends State<CountExample> {
   @override
   Widget build(BuildContext context) {
     final countProvider = Provider.of<CountProvider>(context, listen: false);
-    print('build');
     return Scaffold(
       appBar: AppBar(
         title: Text('Counter'),

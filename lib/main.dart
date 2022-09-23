@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:managestate/provider/count.dart';
 import 'package:managestate/screen/count_example.dart';
+import 'package:managestate/screen/multi_example.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => CountProvider(),
       child: MaterialApp(
-        home: CountExample(),
+        home: ExampleOne(),
       ),
     );
   }
