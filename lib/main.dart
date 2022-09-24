@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:managestate/provider/count.dart';
+import 'package:managestate/provider/multi_provider_example.dart';
 import 'package:managestate/screen/count_example.dart';
 import 'package:managestate/screen/multi_example.dart';
 import 'package:provider/provider.dart';
@@ -14,8 +15,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => CountProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => CountProvider()),
+        ChangeNotifierProvider(create: (_) => ExampleOneProvider()),
+      ],
       child: MaterialApp(
         home: ExampleOne(),
       ),

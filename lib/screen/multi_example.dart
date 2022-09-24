@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:managestate/provider/multi_provider_example.dart';
+import 'package:provider/provider.dart';
 
 class ExampleOne extends StatefulWidget {
   const ExampleOne({super.key});
@@ -10,46 +14,52 @@ class ExampleOne extends StatefulWidget {
 }
 
 class _ExampleOneState extends State<ExampleOne> {
+  double _currentValue = 1.0;
   @override
   Widget build(BuildContext context) {
-    double value = 1.0;
+    print('build');
     return Scaffold(
       appBar: AppBar(
         title: Text('MyApp'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Slider(
-              min: 0,
-              max: 1,
-              value: value,
-              onChanged: (val) {
-                value = val;
-                print(value);
-
-                setState(() {});
-              }),
-          Row(
-            children: [
-              Expanded(
-                child: Container(
-                  decoration:
-                      BoxDecoration(color: Colors.green.withOpacity(value)),
-                  height: 100,
-                  child: Text('container 1'),
+          Consumer<ExampleOneProvider>(builder: ((context, value, child) {
+            return Slider(
+                min: 0,
+                max: 1,
+                activeColor: Colors.red,
+                inactiveColor: Colors.blueGrey,
+                autofocus: true,
+                divisions: 15,
+                value: value.currentValue,
+                onChanged: (val) {
+                  value.setValue(val);
+                });
+          })),
+          Consumer<ExampleOneProvider>(builder: ((context, value, child) {
+            return Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    height: 100,
+                    decoration: BoxDecoration(
+                        color: Colors.green.withOpacity(value.currentValue)),
+                    child: Text('Container 1'),
+                  ),
                 ),
-              ),
-              Expanded(
-                child: Container(
-                  decoration:
-                      BoxDecoration(color: Colors.red.withOpacity(value)),
-                  height: 100,
-                  child: Text('container 1'),
+                Expanded(
+                  child: Container(
+                    height: 100,
+                    decoration: BoxDecoration(
+                        color: Colors.red.withOpacity(value.currentValue)),
+                    child: Text('Container 1'),
+                  ),
                 ),
-              ),
-            ],
-          )
+              ],
+            );
+          })),
         ],
       ),
     );
