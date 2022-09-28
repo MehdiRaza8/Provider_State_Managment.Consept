@@ -15,18 +15,17 @@ class _MyFavouriteItemState extends State<MyFavouriteItem> {
   @override
   Widget build(BuildContext context) {
     final favouriteItemProvidr = Provider.of<FavouriteItem>(context);
-    print('build');
     return Scaffold(
       appBar: AppBar(
-        title: Text('Favourite App'),
+        title: const Text('Favourite App'),
         actions: [
           InkWell(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MyFavouriteItem()));
+                    MaterialPageRoute(builder: (context) => const MyFavouriteItem()));
               },
-              child: Icon(Icons.favorite)),
-          SizedBox(
+              child: const Icon(Icons.favorite)),
+          const SizedBox(
             width: 20,
           )
         ],
@@ -48,7 +47,7 @@ class _MyFavouriteItemState extends State<MyFavouriteItem> {
                             value.addItem(index);
                           }
                         },
-                        title: Text('Item' + index.toString()),
+                        title: Text('Item$index'),
                         trailing: Icon(value.selectedItem.contains(index)
                             ? Icons.favorite
                             : Icons.favorite_outline),

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:managestate/favourite/myfavourite.dart';
 import 'package:managestate/provider/favourite_provider.dart';
 import 'package:provider/provider.dart';
@@ -16,18 +14,19 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
   List<int> selectedItem = [];
   @override
   Widget build(BuildContext context) {
-    print('build');
     return Scaffold(
       appBar: AppBar(
-        title: Text('Favourite App'),
+        title: const Text('Favourite App'),
         actions: [
           InkWell(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MyFavouriteItem()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const MyFavouriteItem()));
               },
-              child: Icon(Icons.favorite)),
-          SizedBox(
+              child: const Icon(Icons.favorite)),
+          const SizedBox(
             width: 20,
           )
         ],
@@ -49,7 +48,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                             value.addItem(index);
                           }
                         },
-                        title: Text('Item' + index.toString()),
+                        title: Text('Item$index'),
                         trailing: Icon(value.selectedItem.contains(index)
                             ? Icons.favorite
                             : Icons.favorite_outline),
