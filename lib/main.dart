@@ -5,6 +5,7 @@ import 'package:managestate/provider/dark_them_provider.dart';
 import 'package:managestate/provider/favourite_provider.dart';
 import 'package:managestate/provider/multi_provider_example.dart';
 import 'package:managestate/screen/dark_them.dart';
+import 'package:managestate/screen/value_notify_lisner.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -32,12 +33,12 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                   brightness: Brightness.light,
                   appBarTheme: AppBarTheme(color: Colors.teal),
-                  iconTheme: IconThemeData(color: Colors.green)),
+                  iconTheme: IconThemeData(color: Colors.teal)),
               darkTheme: ThemeData(
                   brightness: Brightness.dark,
                   appBarTheme: AppBarTheme(color: Colors.yellow),
                   iconTheme: const IconThemeData(color: Colors.red)),
-              home: const DarkThemScreen(),
+              home: NotifyinglisnerScreen(),
             );
           },
         ));
