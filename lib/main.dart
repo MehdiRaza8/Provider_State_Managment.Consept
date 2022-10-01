@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:managestate/provider/auth_provider.dart';
 
 import 'package:managestate/provider/count.dart';
 import 'package:managestate/provider/dark_them_provider.dart';
 import 'package:managestate/provider/favourite_provider.dart';
 import 'package:managestate/provider/multi_provider_example.dart';
 import 'package:managestate/screen/dark_them.dart';
+import 'package:managestate/screen/login.dart';
 import 'package:managestate/screen/value_notify_lisner.dart';
 import 'package:provider/provider.dart';
 
@@ -24,6 +26,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => ExampleOneProvider()),
           ChangeNotifierProvider(create: (_) => FavouriteItem()),
           ChangeNotifierProvider(create: (_) => ThemChanger()),
+          ChangeNotifierProvider(create: (_) => Authentication()),
         ],
         child: Builder(
           builder: (BuildContext context) {
@@ -38,7 +41,7 @@ class MyApp extends StatelessWidget {
                   brightness: Brightness.dark,
                   appBarTheme: AppBarTheme(color: Colors.yellow),
                   iconTheme: const IconThemeData(color: Colors.red)),
-              home: NotifyinglisnerScreen(),
+              home: LoginScreen(),
             );
           },
         ));
